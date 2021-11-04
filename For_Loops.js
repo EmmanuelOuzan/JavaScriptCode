@@ -65,7 +65,7 @@ while(exit){
                     console.log(`The number is appearing ${counter} times`)
 
                     break;
-                case '0':
+                case null:
                 case '6':
                     exit = false;
                     console.log("You have exited the program!");
