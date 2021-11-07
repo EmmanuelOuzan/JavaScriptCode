@@ -46,17 +46,17 @@ for (let i = 1; i <= 100; i++) {
 console.log(show);
 
 // 8 Boom
-let show = "";
+let show2 = "";
 for (let i = 1; i <= 10; i++) {
     console.log('\n');
     for (let j = 1; j <= 10; j++) {
         if ((i * j).toString().includes("8")) {
-            show += "boom" + "\t";
+            show2 += "boom" + "\t";
         } else {
-            show += (i * j) + "\t" + "\t";
+            show2 += (i * j) + "\t" + "\t";
         }
     }
-    show += "\n";
+    show2 += "\n";
 }
 
-console.log(show);
+console.log(show2);
