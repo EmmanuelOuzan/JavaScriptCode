@@ -22,16 +22,42 @@ let sucssesRate = 0;
 while(guesses > 0){
     let user_guess = prompt("Please guess a character!").toLowerCase();
     if(user_guess.length != 1){
-        console.log("Out!");
+        console.log("Input error! please type only one char!");
         continue;
     }
     if(pcString.toLowerCase().includes(user_guess)){
         sucssesRate++;
-        guesses--;
-        console.log("Success!");
-       continue;
+        console.log("Success! nice!");
     }
     console.log(`one guess wasted ${guesses} left`);
     guesses--;
 }
 console.log(`Your sucssess rate is ${sucssesRate}/4`);
+
+
+let show = "";
+for(let i =1;i <= 100;i++){
+    console.log('\n');
+  for(let j = 1; j <= 10; j++){
+    show += (i * j) + '\t';
+  }
+  show += "\n";
+}
+console.log(show);
+
+// 8 Boom
+let show = "";
+for(let i =1;i <= 10;i++){
+    console.log('\n');
+  for(let j = 1; j <= 10; j++){
+      if((i * j).toString().includes("8")){
+          show += "boom" + "\t";
+      }
+      else{
+        show += (i * j) + "\t" + "\t";
+      }
+    }
+    show += "\n";
+  }
+  
+console.log(show);
