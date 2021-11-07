@@ -46,14 +46,15 @@
                 }
                 break;
             case '4':
+                // to do with while
                 for (i = 0; i < userString.length; i++) {
                     if (!isNaN(userString[i])) {
                         console.log("The string contains a number");
                         break;
                     }
-                    console.log("The string dose not contain a number");
                     break;
                 }
+                console.log("The string dose not contain a number");
                 break;
             case '5':
                 let charToFind = prompt("Which char do you want to find in the string?");
