@@ -42,6 +42,18 @@ for(let i = 0; i < txt1.length -1; i++){
 animals_by_number
 
 
+if (user_choice == 1) {
+  let code = prompt("Please enter an animal code");
+  console.log(`Animal Code: ${code} 
+    The name of the Animal is ${animal_codes_arr[code]}`);
+} else if (user_choice == 2) {
+  let name = prompt("Please enter an animal name");
+  console.log(`Name of the Animal ${name}
+    Animal Code that was found ${animal_names_arr[name]}
+    `);
+} else {
+  console.log("You can only choose 1 or 2. Try again!");
+}
 
 // // Creation of both arrays with animal_string
 // for(let i = 0; i < animal_string.length; i++){

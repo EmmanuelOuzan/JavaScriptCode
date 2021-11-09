@@ -30,16 +30,28 @@ Please select an option to look for an animal:
 [1] - Look by animal Code
 [2] - Look by animal name
 `);
-if (user_choice == 1) {
+
+if (user_choice == 1)
+  animal_name();
+else if(user_choice == 2)
+  animal_code();
+else
+  // should think about it work on it
+
+
+
+function animal_name() {
   let code = prompt("Please enter an animal code");
   console.log(`Animal Code: ${code} 
     The name of the Animal is ${animal_codes_arr[code]}`);
-} else if (user_choice == 2) {
+    return animal_codes_arr[code];
+}
+
+
+function animal_code() {
   let name = prompt("Please enter an animal name");
-  console.log("name");
   console.log(`Name of the Animal ${name}
     Animal Code that was found ${animal_names_arr[name]}
-    `)
-} else {
-  console.log("You can only choose 1 or 2. Try again!");
+    `);
+    return animal_names_arr[name];
 }
