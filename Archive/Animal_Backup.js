@@ -40,25 +40,6 @@ for(let i = 0; i < txt1.length -1; i++){
   animals_by_number[i] = txt1[i + 1];
 }
 animals_by_number
-let user_choice = prompt(`
-Welcome to the animal_Database!
-Please select an option to look for an animal:
-[1] - Look by animal Code
-[2] - Look by animal name
-`);
-user_choice = 1;
-if (user_choice == 1) {
-    let code = prompt("Please enter an animal code");
-    console.log(`Animal Code: ${code} 
-    The name of the Animal is ${}`
-    );
-}
-else if (user_choice == 2) {
-    let name = prompt("Please enter an animal name");
-}
-else {
-
-}
 
 
 
