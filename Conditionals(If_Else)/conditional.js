@@ -3,29 +3,29 @@ let userNum = prompt("Enter a number");
 let num = 4;
 
 if (userNum > num) {
-    console.log("The user number is bigger then my number")
+    console.log("The user number is bigger then my number");
 } else if (num < userNum) {
-    console.log("THe user number is smaller")
+    console.log("THe user number is smaller");
 } else {
-    console.log("The numbers are equal!")
+    console.log("The numbers are equal!");
 }
 
 // 2. With If: Finding the biggest number
-let num1 = prompt("Enter the first num")
-let num2 = prompt("Enter the second num")
-let num3 = prompt("Enter the third num")
+let a = prompt("Enter the first num");
+let b = prompt("Enter the second num");
+let c = prompt("Enter the third num");
 
-if (num1 > num2) {
-    if (num1 > num3) {
-        console.log(num1)
+if (a > b) {
+    if (a > c) {
+        console.log(a);
     } else {
-        console.log(num3)
+        console.log(c);
     }
 } else {
-    if (num3 > num2) {
-        console.log(num3)
+    if (c > b) {
+        console.log(c);
     } else {
-        console.log(num2)
+        console.log(b);
     }
 }
 

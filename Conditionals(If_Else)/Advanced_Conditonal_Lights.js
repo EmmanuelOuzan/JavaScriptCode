@@ -38,12 +38,7 @@ let speed_result = (speed <= 40) ? "GO GO!" :
 console.log(speed_result);
 
 let a = 7;
-let b = 4;
-let c = 3;
-
-
-let biggest = (a > b) && (a > c) ? `a : ${a} is the biggest` : (b > a) && (b > c) ? `b: ${b} is the biggest` : (c > b) && (c > a) ? `c :${c} is the biggest` : "Wrong number";
-console.log(biggest);
-
-// to be optimized : 
-// let msg = (a > b) ? (a > c) ? a : c : (b > c) ? b : c;
+let b = 10;
+let c = 9;
+let new_biggest = (a > b) ? (a > c) ? `a : ${a} is the biggest` : `c :${c} is the biggest` : (b > c) ? `b: ${b} is the biggest` : 'c';
+console.log(new_biggest);
