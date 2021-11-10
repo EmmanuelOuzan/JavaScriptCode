@@ -1,4 +1,4 @@
-// Priority of the vbooleans
+// Priority of the booleans
 let username = prompt("Enter username")
 let firstName = prompt("FirstName")
 let familiyName = prompt("Enter Familiy Name")
