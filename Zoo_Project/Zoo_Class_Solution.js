@@ -36,6 +36,7 @@ switch (user_choice) {
         delete_animal_from_DB();
         break;
     default:
+        console.log("Please enter a number between 1 - 4");
         break;
 }
 
@@ -57,28 +58,28 @@ function get_animal_by_name() {
         }
     }
 }
-function insert_animal(){
+
+function insert_animal() {
     console.log("Lets add an animal!");
     let animal_name = prompt("Enter an animal name");
     let code = prompt("Enter a code for the animal");
-    if(animals[code] != undefined){
+    if (animals[code] != undefined) {
         console.log("The animal already exists! Aborting!")
-    }
-    else{
+    } else {
         console.log(`Adding animal with code ${code} & name ${animal_name} `)
         animals[code] = animal_name;
         console.log(animals)
     }
 
 }
+
 function delete_animal_from_DB() {
     let code = prompt("Enter a code for the animal");
     let rip_animal = animals[code];
-    if(animals[code] != undefined){
+    if (animals[code] != undefined) {
         delete animals[code];
         console.log(`The Animal with code ${code} was deleted RIP: ${rip_animal}`);
-    }
-    else{
+    } else {
         console.log("There is no such animal! Nothing has been deleted");
     }
 }
