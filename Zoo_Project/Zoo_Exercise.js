@@ -1,8 +1,12 @@
+// Animals Database Solution - Zoo
 let text1 = "Dog12, CAT3, LiOn7, DolphiN11, fish6";
 let text2 = "PIG17, bear29, BiRd8, SNAKE39, donkey14";
+// connecting between the strings + lowering all letters + spliting
 let animal_text = text1.concat(", ", text2).toLowerCase().split(', ');
-let animals = [];
 
+let animals = [];
+// Inserting the string into the array
+// in a  format of code : animal
 for (v of animal_text) {
     for (i in v) {
         if (!isNaN(v[i])) {
@@ -21,7 +25,7 @@ Please select an option to search for an animal:
 [3] - Add an animal
 [4] - Delete an animal
 `));
-
+// To do : Add Try and Catch
 switch (user_choice) {
     case 1:
         get_animal_by_code();
@@ -40,7 +44,9 @@ switch (user_choice) {
         break;
 }
 
-// All function declration 
+// All functions declarations 
+
+
 function get_animal_by_code() {
     let code = prompt("Please enter an animal code");
     console.log(`Animal Code: ${code} 
@@ -72,6 +78,7 @@ function insert_animal() {
     }
 
 }
+
 
 function delete_animal_from_DB() {
     let code = prompt("Enter a code for the animal");
