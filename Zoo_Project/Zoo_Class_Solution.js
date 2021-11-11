@@ -7,30 +7,9 @@ for (v of animal_text) {
     for (i in v) {
         if (!isNaN(v[i])) {
             animals[Number(v.slice(i))] = v.slice(0, i);
-            break;  
-        }
-    }
-}
-
-
-// All function declration 
-const get_animal_by_code = () => {
-    let code = prompt("Please enter an animal code");
-    console.log(`Animal Code: ${code} 
-      The name of the Animal is ${animals[code]}`);
-      get_animal_by_name()
-}
-const get_animal_by_name = () => {
-    let animal_input_name = prompt("Please enter an animal name");
-    for (i in animals) {
-        console.log(i)
-        if (animals[i] == animal_input_name) {
             break;
         }
     }
-    console.log(`Name of the Animal : ${animal_input_name}
-      Animal Code that was found : ${i} 
-      `);
 }
 
 
@@ -50,7 +29,56 @@ switch (user_choice) {
     case 2:
         get_animal_by_name();
         break;
+    case 3:
+        insert_animal();
+        break;
+    case 4:
+        delete_animal_from_DB();
+        break;
     default:
         break;
 }
 
+// All function declration 
+function get_animal_by_code() {
+    let code = prompt("Please enter an animal code");
+    console.log(`Animal Code: ${code} 
+      The name of the Animal is ${animals[code]}`);
+    get_animal_by_name()
+}
+
+function get_animal_by_name() {
+    let animal_input_name = prompt("Please enter an animal name");
+    console.log(`Name to search ${animal_input_name}`);
+    for (i in animals) {
+        if (animals[i].includes(animal_input_name)) {
+            console.log(`Name of the Animal: ${animals[i]}
+            Animal Code that was found: ${i}`);
+        }
+    }
+}
+function insert_animal(){
+    console.log("Lets add an animal!");
+    let animal_name = prompt("Enter an animal name");
+    let code = prompt("Enter a code for the animal");
+    if(animals[code] != undefined){
+        console.log("The animal already exists! Aborting!")
+    }
+    else{
+        console.log(`Adding animal with code ${code} & name ${animal_name} `)
+        animals[code] = animal_name;
+        console.log(animals)
+    }
+
+}
+function delete_animal_from_DB() {
+    let code = prompt("Enter a code for the animal");
+    let rip_animal = animals[code];
+    if(animals[code] != undefined){
+        delete animals[code];
+        console.log(`The Animal with code ${code} was deleted RIP: ${rip_animal}`);
+    }
+    else{
+        console.log("There is no such animal! Nothing has been deleted");
+    }
+}

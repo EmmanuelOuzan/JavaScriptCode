@@ -10,15 +10,15 @@ animal_string = animal_string.toLowerCase();
 animal_string = animal_string.match(/[a-zA-Z]+|[0-9]+/g);
 
 // Creation of nessecary arrays
-const animal_names_arr = [];
+const animals = [];
 const animal_codes_arr = [];
 let letters_sum = "";
 
 for (let i = 0; i < animal_string.length; i += 2) {
-  animal_names_arr[animal_string[i]] = animal_string[i + 1];
+  animals[animal_string[i]] = animal_string[i + 1];
   animal_codes_arr[animal_string[i + 1]] = animal_string[i];
 }
-console.log(animal_names_arr);
+console.log(animals);
 console.log(animal_codes_arr);
 
 
@@ -51,7 +51,7 @@ function animal_name() {
 function animal_code() {
   let name = prompt("Please enter an animal name");
   console.log(`Name of the Animal ${name}
-    Animal Code that was found ${animal_names_arr[name]}
+    Animal Code that was found ${animals[name]}
     `);
-    return animal_names_arr[name];
+    return animals[name];
 }
