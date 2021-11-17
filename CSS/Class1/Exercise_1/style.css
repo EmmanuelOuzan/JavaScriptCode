@@ -1,0 +1,20 @@
+body {
+    background-color: whitesmoke;
+    direction: rtl;
+}
+p {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+ li {
+    display: inline; 
+    float: right;
+    padding: 10px;
+}
+header{
+    background-color: white;
+    margin-top: 10px;
+    position: fixed;
+    margin-top: auto;
+    width: 900px;
+}

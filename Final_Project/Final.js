@@ -1,3 +1,7 @@
+// TO DO :
+// Maybe return word instead of boolean in check input methods
+// How to catch unexpected tokens?
+
 // constructor of person 
 
 function Person(fname, lname, id, city, birthDate, parentId = 0) {
@@ -17,15 +21,27 @@ people.push(person1);
 
 let check = people.filter(person => console.log(person));
 
-function check_input(fname, lname, id, city, birthDate, parentId = 0) {
-    // check fname
-    // try and catch unexpected tokens
-        for (i in fname) {  
-            if (!isNaN(i)) {
-                console.log("Please enter an input without numbers");
-                return false;
-            }
+function check_Numbers(user_input) {
+    for (i in user_input) {  
+        if (!isNaN(i)) {
+            console.log("Please enter an input without numbers");
+            // Maybe return string
+            return false;
+        }
+}
+}
+function check_for_letters(user_input) {
+    for(i in user_input){
+        if(isNaN(i)){
+            console.log("Please enter an input without letters");
+            return false;
+        }
     }
+}
+
+function check_input(fname, lname, id, city, birthDate, parentId = 0) {
+    
+    // try and catch unexpected tokens
 }
 
 function add_person(fname, lname, id, city, birthDate, parentId = 0) {
