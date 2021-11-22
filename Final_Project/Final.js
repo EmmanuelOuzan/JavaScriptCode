@@ -1,6 +1,10 @@
 // TO DO :
 // Maybe return word instead of boolean in check input methods
 // How to catch unexpected tokens?
+// Check if there a token
+// Check if string is not empty
+
+
 
 // constructor of person 
 
@@ -21,27 +25,35 @@ people.push(person1);
 
 let check = people.filter(person => console.log(person));
 
-function check_Numbers(user_input) {
-    for (i in user_input) {  
+function validate_Number(user_input) {
+    for (i of user_input) {
         if (!isNaN(i)) {
             console.log("Please enter an input without numbers");
             // Maybe return string
             return false;
         }
+    }
+    return true;
 }
-}
-function check_for_letters(user_input) {
-    for(i in user_input){
-        if(isNaN(i)){
+
+function validate_String(user_input) {
+    for (i of user_input) {
+        if (isNaN(i)) {
             console.log("Please enter an input without letters");
             return false;
         }
     }
+    return true;
 }
 
 function check_input(fname, lname, id, city, birthDate, parentId = 0) {
-    
-    // try and catch unexpected tokens
+    validate_String(fname);
+    validate_String(lname);
+    validate_Number(id);
+    validate_String(city);
+    // birthdate which format? 08/08/1a97 dd/mm/
+    //const date1 = new Date('December 17, 1995 03:24:00');
+    validate_Number(parentId);
 }
 
 function add_person(fname, lname, id, city, birthDate, parentId = 0) {
