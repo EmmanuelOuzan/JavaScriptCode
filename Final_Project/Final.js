@@ -28,7 +28,7 @@ let people = [];
 people.push(person1);
 people.push(person2);
 // Operation on each of one of the people
-people.forEach(v => console.log(v.birthDate))
+people.forEach(v => console.log(v.birthDate));
 people.forEach(person => console.log(person.id));
 
 // Filters for something
