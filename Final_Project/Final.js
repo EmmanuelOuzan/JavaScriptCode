@@ -52,7 +52,7 @@ function check_input(fname, lname, id, city, birthDate, parentId = 0) {
     validate_String(fname);
     validate_String(lname);
     validate_Number(id);
-    validate_String(city);
+    validate_String(city)
     validate_date(birthDate);
     validate_Number(parentId);
 }

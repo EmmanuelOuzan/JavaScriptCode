@@ -1,0 +1,13 @@
+#board {
+ display: flex;
+ flex-wrap: wrap;
+ margin: auto;
+ width: 360px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color:hotpink;
+    margin: 10px;
+}

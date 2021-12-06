@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="+" onclick="add()"> + </button>
+    <button id="-" onclick='decrease()'> - </button>
+    <button id="+g" onclick="general(this)" data-type='+'>+g</button>
+    <button class="-g" onclick="general(this)" data-type="-">-g</button>
+    <br>
+    <span id="spn">0</span> -->
+    <label for="">1</label>
+    <br>
+    <input type="range" name="range" id="range" min="0" max="100" value="5" onclick="update()">
+    <span id="spn">0</span>
+    <br>
+
+    <label for="">2</label>
+    <input type="range" id="range_random" min="0" max="100" value="50" onclick="update()">
+    <input type="text" id="guess">
+    <button id="enter" onclick="compare()">Check!</button>
+    <div>>>><span id="rnd_spn">0</span></div>
+    <span id="result"></span>
+
+
+
+
+
+    <script src="events.js"></script>
+</body>
+
+</html>
