@@ -1,5 +1,5 @@
 let counter = 0;
- 
+
 function add() {
     counter++;
     document.getElementById('spn').innerText = counter;
@@ -9,11 +9,11 @@ function decrease() {
     document.getElementById('spn').innerText = counter;
 }
 
-function general(button){
-    if (button.dataset.type == "+"){
+function general(button) {
+    if (button.dataset.type == "+") {
         document.getElementById('spn').innerText = ++counter;
     }
-    else if(button.dataset.type == '-'){
+    else if (button.dataset.type == '-') {
         document.getElementById('spn').innerText = --counter;
     }
 }
@@ -26,10 +26,10 @@ function update() {
     document.getElementById('spn').innerText = r.value;
 }
 function compare() {
-    if (document.getElementById('range_random').value == document.getElementById('guess').value){
+    if (document.getElementById('range_random').value == document.getElementById('guess').value) {
         document.getElementById('result').innerText = 'right!';
     }
-    else{
+    else {
         document.getElementById('result').innerText = 'wrong!';
     }
 }

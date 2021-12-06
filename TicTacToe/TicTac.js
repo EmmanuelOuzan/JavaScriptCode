@@ -41,8 +41,9 @@ let currentPlayer = {
 }
 
 function clickOnCell(e) {
-    // check which cell pressed
-    let index = Number(e.target.id.slice(4))
+    // check which cell pressed 
+    // here its cell4
+    let index = Number(e.target.id.slice(4))    
     // if exist
     board[index] = currentPlayer.shape;
     e.target.classList.add(currentPlayer.style)
