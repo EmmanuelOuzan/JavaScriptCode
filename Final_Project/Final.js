@@ -22,16 +22,20 @@ function Person_creation(fname, lname, id, city, birthDate, parentId = 0) {
 // Creation Example 
 let person1 = Person_creation('Emmanuel', 'Ouzan', '324320134', 'JLM', '08/08/1997', '0');
 let person2 = Person_creation('Aviad', 'derli', '123', 'JLM', '08/02/1989', '0');
-let person3 = Person_creation("Hana", 'lname', '321', 'BeitShemesh', '08/06/97', 324320134);
+let person3 = Person_creation("Hana", 'lname', '321', 'BeitShemesh', '08/06/97', '324320134');
+let person4 = Person_creation('Shlomi','Avinoam','321','Jerusalem','08/08/88','123');
 
 // Change of attribute
 person2.city = "TLV";
 
 // Creation of an array of objects called people
 let people = [];
-// add the people to the array
+
+// Add the people to the array
 people.push(person1);
 people.push(person2);
+people.push(person3);
+people.push(person4);
 
 // Operation on each of one of the people
 people.forEach(v => console.log(v.birthDate));
