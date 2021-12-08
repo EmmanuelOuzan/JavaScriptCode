@@ -48,10 +48,7 @@ people.forEach(person => console.log(person.id));
 let check = people.filter(person => person.lname == 'Ouzan');
 people.filter(element => element == 'Emmanuel');
 
-function add_person(params) {
-    let fname = prompt("Please enter your first name");
-    let lname = prompt("Please enter your last name");
-}
+
 function check_input(fname, lname, id, city, birthDate, parentId = 0) {
     validate_String(fname);
     validate_String(lname);
@@ -62,6 +59,12 @@ function check_input(fname, lname, id, city, birthDate, parentId = 0) {
 }
 
 function add_person(fname, lname, id, city, birthDate, parentId = 0) {
+    let fname = prompt("Please enter your first name");
+    validate_String(fname);
+    let lname = prompt("Please enter your last name");
+    validate_String(lname);
+    let id = prompt("Please enter your ID");
+    
     check_input(fname, lname, id, city, birthDate, parentId);
     if (parentId != 0) {
         if (people.forEach(person => console.log(person.id))) {
