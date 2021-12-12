@@ -13,12 +13,13 @@ app.get('/', function (req, res) {
 // Params
 // const action = req.params.action;
 // '/calc/:action/'
+
+// Listening to http://localhost:port/calc
 app.get('/calc', function (req, res) {
+    // http://localhost:2000/calc/?num1=1&num2=2&action=minus
     const query = req.query;
     console.log(query)
-    // console.log(action);
     const action = req.query.action;
-    let result = 0;
     res.send(`num2  ${query.num1}  num1 :  ${query.num2} Result: ${calc[action](Number(query.num1), Number(query.num2))}`);
 })
 app.get('/hello', function (req, res) {

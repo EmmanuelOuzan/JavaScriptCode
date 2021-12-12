@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server",
-    "welcome" : "Good Morning"
+    "welcome": "Good Morning"
   },
   "author": "",
   "license": "ISC",
