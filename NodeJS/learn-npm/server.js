@@ -4,8 +4,8 @@ const calc = require('../calc')
 
 const app = express();
 let port = 2000;
-app.listen(2000,
-    () => console.log(`server is running! port ${port}`))
+app.listen(2000,() => console.log(`server is running! port ${port}`));
+// app.use(express.static('public'));
 
 app.get('/', function (req, res) {
     res.send('Hello World!!')
