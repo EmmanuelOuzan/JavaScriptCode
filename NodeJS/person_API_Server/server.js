@@ -56,8 +56,21 @@ app.post('/person', body(['fname', 'lname', 'city', 'eyeColor']).isAlpha(), body
 })
 
 // PUT - Update of a person
-app.put('/person', function (req, res) {
-    res.send('Got a PUT request at /person');
+app.put('/person/:id', body('property', 'value').isAlphanumeric(), function (req, res) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            errors: errors.array()
+        });
+    }
+    const {
+        id
+    } = req.params
+    const {
+        property,
+        value
+    } = req.body
+    res.send(`${JSON.stringify(people.update_person(id, property, value))}`);
 })
 
 

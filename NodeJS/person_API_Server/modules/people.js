@@ -1,4 +1,4 @@
-// const show_people = require('./show_people');
+const e = require("express");
 
 // Creation of an array of objects called people
 let people = [];
@@ -17,15 +17,18 @@ function person_creation(fname, lname, age, city, eyeColor) {
     uniq_ID += 1;
     return person;
 }
+// Creation Example 
+person_creation('Emmanuel', 'Ouzan', 25, 'jlm', 'blue');
+person_creation('Emmanuel2', 'Ouzan2', 25, 'jlm', 'blue');
 
 function show_people() {
     return people;
 }
 
 function show_person(id) {
-    const location = people.findIndex(element => element.uniq_ID == id);
-    if (location != -1) {
-        return people[location];
+    const index = people.findIndex(element => element.uniq_ID == id);
+    if (index != -1) {
+        return people[index];
     } else {
         return `The Person with the ID: '${id}' was not found`
     }
@@ -38,9 +41,16 @@ function delete_person(id) {
     else
         return false
 }
-// Creation Example 
-let person3 = person_creation('Amir', 'Barkol', 25, 'jlm', 'blue');
-let person4 = person_creation('Amir2', 'Barkol2', 25, 'jlm', 'blue');
+
+function update_person(id, property, value) {
+    const index = people.findIndex(element => element.uniq_ID == id);
+    if(index != -1){
+        people[index][property] = value;
+        return people[index];
+    }
+    else 
+        return `The Person with the ID: '${id}' was not found`
+}
 
 // To ask yossef how to import array between files
 
@@ -48,5 +58,6 @@ module.exports = {
     person_creation,
     show_people,
     delete_person,
-    show_person
+    show_person,
+    update_person
 };
