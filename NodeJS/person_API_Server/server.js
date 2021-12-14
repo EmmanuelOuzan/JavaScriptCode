@@ -70,7 +70,7 @@ app.put('/person/:id', body('property', 'value').isAlphanumeric(), function (req
         property,
         value
     } = req.body
-    res.send(`${JSON.stringify(people.update_person(id, property, value))}`);
+    res.send(`Person Changed :${JSON.stringify(people.update_person(id, property, value))}`);
 })
 
 
@@ -89,5 +89,5 @@ app.delete('/person/:id', function (req, res) {
 
 // port listening
 app.listen(port, () => {
-    console.log(` \n Person app listening at http://localhost:${port}`)
+    console.log(` \n Person app listening at http://localhost:${port} : With great power...`)
 })
