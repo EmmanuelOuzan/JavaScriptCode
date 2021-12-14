@@ -32,10 +32,11 @@ function show_person(id) {
 }
 
 function delete_person(id) {
-    id = Number(id);
-    const correct_id = (element) => element.id == id;
-    let index = people.findIndex(correct_id);
-    return people.splice(index, 1);
+    let index = people.findIndex(element => element.uniq_ID == id);
+    if (index != -1)
+        return people.splice(index, 1);
+    else
+        return false
 }
 // Creation Example 
 let person3 = person_creation('Amir', 'Barkol', 25, 'jlm', 'blue');
