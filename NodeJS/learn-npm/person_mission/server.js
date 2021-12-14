@@ -1,6 +1,5 @@
-// REST API SERVER CREATION ! 
+// REST API SERVER CREATION ! YAY
 const express = require('express');
-const res = require('express/lib/response');
 const people = require('./modules/people');
 const app = express()
 const port = 4000
@@ -18,12 +17,26 @@ app.get('/person', (req, res) => {
     res.send(people.show_people())
 })
 
+// GET - Specific Person With Params
+app.get('/person/:id', (req, res) => {
+    const {
+        id
+    } = req.params;
+    res.send(people.show_person(id));
+})
+
 // POST - Creation of a new person
 app.post('/person', function (req, res) {
-    // const
-    // { fname,lname,}
-    let person = people.person_creation(req.body.fname, req.body.lname, req.body.age, req.body.city, req.body.eyeColor);
-    res.send('Person Has been created. \n ' + JSON.stringify(person));
+    // Old Option let person = people.person_creation(req.body.fname, req.body.lname, req.body.age, req.body.city, req.body.eyeColor);
+    const {
+        fname,
+        lname,
+        age,
+        city,
+        eyeColor
+    } = req.body
+    let person = people.person_creation(fname, lname, age, city, eyeColor);
+    res.send(`Person has been created. \n ${JSON.stringify(person)}`);
 })
 
 // PUT - Update of a person
@@ -33,7 +46,9 @@ app.put('/person', function (req, res) {
 
 // DELETE - Delete a person
 app.delete('/person/:id', function (req, res) {
-    const { id } = req.params;
+    const {
+        id
+    } = req.params;
     people.delete_person(id);
     res.send('Got a delete request at /person ' + id);
 })
