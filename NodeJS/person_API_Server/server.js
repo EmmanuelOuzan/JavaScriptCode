@@ -2,7 +2,7 @@
 const express = require('express');
 const people = require('./modules/people');
 const app = express()
-const port = 4000
+const port = 3000
 
 // Accepting body and converting it to JSON.
 // API works only with strings by
