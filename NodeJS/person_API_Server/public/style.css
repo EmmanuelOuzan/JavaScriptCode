@@ -1,0 +1,23 @@
+#id {
+    margin:auto;
+}
+#form{
+    padding-right: 20px;
+}
+.flex {
+    display: flex;
+    margin:auto;
+    width: 50%;
+}
+.list {
+    text-align: center;
+    padding-left: 70px;
+}
+
+.vl {
+    border-left: 6px solid black;
+    height: 500px;
+  }
+  .textbox {
+    margin: 5px 0px 5px;
+  }

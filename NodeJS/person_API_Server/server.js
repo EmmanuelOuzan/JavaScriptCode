@@ -5,12 +5,14 @@ const PORT = 3000
 
 require('./router')(app)
 
+// Exporting files:
+app.use(express.static('public'))
+
 // Accepting body and converting it to JSON.
 // API works only with strings by
 app.use(express.json())
 
-// Exporting files:
-// app.use(express.static('public'))
+
 
 // port listening
 app.listen(PORT, () => {

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Syn & Asyn</title>
+</head>
+
+<body>
+    <div class="flex">
+        <div id='form'>
+            <form action="http://localhost:3000/person" method="post" target="_self" id="form">
+                <h1>Add a Person</h1>
+                <input type="text" name="firstname" id="" placeholder="Firstname" class='textbox'><br>
+                <input type="text" name="lastname" id="" placeholder="LastName" class='textbox'><br>
+                <input type="text" name="age" id="" placeholder="age" class='textbox'><br>
+                <input type="text" name="city" id="" placeholder="city" class='textbox'><br>
+                <label for="eyeColor">Eye color:</label>
+                <input type="color" id="eyeColor" name="eyeColor" value="#000000" class='textbox'><br><br>
+                <label for="action" class='textbox'>Choose an Action:</label>
+                <select name="city" title="city" id="" class='textbox'>
+                    <option value="Jerusalem">Jerusalem</option>
+                    <option value="TLV">TLV</option>
+                    <option value="Rishon">Rishon</option>
+                    <option value="Ashdod">Ashdod</option>
+                </select> <br>
+                <button type="submit" class='textbox'>ADD</button>
+            </form>
+        </div>
+        <div class="vl"></div>
+        <div class="list">
+            <h1>List</h1>
+        </div>
+    </div>
+    <br>
+    <button>get list </button>
+    <div id='box'></div>
+    <script>
+        document.querySelector('button').onclick = () => {
+            axios.get('/person')
+                .then(result => {
+                    document.querySelector('#box').innerHTML = JSON.stringify(result.data)
+                    console.log(result.data)
+                })
+        }
+    </script>
+</body>
+
+</html>

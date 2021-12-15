@@ -4,8 +4,6 @@
 // 3. use more const then let DONE
 // 4. Change the find Index to a function DONE
 
-const e = require("express");
-
 // let addRequestId = require('express-request-id')();
 // Creation of an array of objects called people
 const people = [];
