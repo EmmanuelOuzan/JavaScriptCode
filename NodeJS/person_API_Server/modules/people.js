@@ -1,7 +1,14 @@
+// TO DO  :
+// 1. Use the express-id package to generate ID
+// 2. Change the else to generate an arrow
+// 3. use more const then let
+// 4. Change the find Index to a function
+
 const e = require("express");
 
+// let addRequestId = require('express-request-id')();
 // Creation of an array of objects called people
-let people = [];
+const people = [];
 let uniq_ID = 0;
 
 function person_creation(fname, lname, age, city, eyeColor) {
@@ -26,10 +33,10 @@ function show_people() {
 }
 
 function show_person(id) {
-    const index = people.findIndex(element => element.uniq_ID == id);
+    const index = getIndexbyID();
     if (index != -1) {
         return people[index];
-    } else {
+    } else { // Throw
         return `The Person with the ID: '${id}' was not found`
     }
 }
@@ -38,21 +45,24 @@ function delete_person(id) {
     let index = people.findIndex(element => element.uniq_ID == id);
     if (index != -1)
         return people.splice(index, 1);
-    else
+    else // Throw
         return false
 }
 
 function update_person(id, property, value) {
-    const index = people.findIndex(element => element.uniq_ID == id);
+    const index = getIndexbyID(id);
     if(index != -1){
         people[index][property] = value;
         return people[index];
     }
-    else 
+    else // Throw
         return `The Person with the ID: '${id}' was not found`
 }
 
-// To ask yossef how to import array between files
+function getIndexbyID(id) {
+    return people.findIndex(element => element.uniq_ID == id);
+}
+
 
 module.exports = {
     person_creation,
