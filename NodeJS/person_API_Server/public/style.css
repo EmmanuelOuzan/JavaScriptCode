@@ -1,15 +1,19 @@
 #id {
-    margin:auto;
+    margin: auto;
 }
-#form{
+
+#form {
     padding-right: 20px;
 }
+
 .flex {
     display: flex;
-    margin:auto;
+    margin: auto;
     width: 50%;
 }
-.list {
+
+.list h1 {
+    /* display: flex; */
     text-align: center;
     padding-left: 70px;
 }
@@ -17,7 +21,21 @@
 .vl {
     border-left: 6px solid black;
     height: 500px;
-  }
-  .textbox {
+}
+
+.textbox {
     margin: 5px 0px 5px;
-  }
+}
+
+.person_list li {
+    list-style-type: none;
+    border: black;
+    /* align-items: flex-start;
+    justify-content: space-between;  */
+}
+
+.person_item {
+    width: 300px;
+    height: 100px;
+    border: 1px solid blue;
+}

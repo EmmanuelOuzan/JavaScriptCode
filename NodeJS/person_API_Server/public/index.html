@@ -21,8 +21,7 @@
                 <input type="text" name="city" id="" placeholder="city" class='textbox'><br>
                 <label for="eyeColor">Eye color:</label>
                 <input type="color" id="eyeColor" name="eyeColor" value="#000000" class='textbox'><br><br>
-                <label for="action" class='textbox'>Choose an Action:</label>
-                <select name="city" title="city" id="" class='textbox'>
+                <select name="city" title="city" class='textbox'>
                     <option value="Jerusalem">Jerusalem</option>
                     <option value="TLV">TLV</option>
                     <option value="Rishon">Rishon</option>
@@ -34,19 +33,26 @@
         <div class="vl"></div>
         <div class="list">
             <h1>List</h1>
+            <ul class='person_list'>
+                <li id="fname_lname"></li>
+                <li id="age"></li>
+                <li id='city'></li>
+            </ul>
         </div>
     </div>
     <br>
-    <button>get list </button>
-    <div id='box'></div>
     <script>
-        document.querySelector('button').onclick = () => {
-            axios.get('/person')
-                .then(result => {
-                    document.querySelector('#box').innerHTML = JSON.stringify(result.data)
-                    console.log(result.data)
-                })
-        }
+        axios.get('/person')
+            .then(result => {
+                for (const key in result.data) {
+                    document.querySelector('.person_list').innerHTML += `<div class='person_item'></div>`
+                    document.querySelector('.person_list').innerHTML += ` <b><li> ${JSON.stringify(result.data[key].fname)} </li></b>`
+                    document.querySelector('.person_list').innerHTML += `<li> ${JSON.stringify(result.data[key].age)} </li>`
+                    document.querySelector('.person_list').innerHTML += `<li> ${JSON.stringify(result.data[key].city)} <li> <br>`
+                }
+                console.log(result.data)
+            })
+
     </script>
 </body>
 
