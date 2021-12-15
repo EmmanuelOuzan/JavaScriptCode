@@ -1,8 +1,8 @@
 // TO DO  :
 // 1. Use the express-id package to generate ID
-// 2. Change the else to generate an arrow
-// 3. use more const then let
-// 4. Change the find Index to a function
+// 2. Change the else to generate an error
+// 3. use more const then let DONE
+// 4. Change the find Index to a function DONE
 
 const e = require("express");
 
@@ -10,6 +10,8 @@ const e = require("express");
 // Creation of an array of objects called people
 const people = [];
 let uniq_ID = 0;
+const uniqid = require('uniqid'); 
+
 
 function person_creation(fname, lname, age, city, eyeColor) {
     let person = {
@@ -33,7 +35,7 @@ function show_people() {
 }
 
 function show_person(id) {
-    const index = getIndexbyID();
+    const index = getIndexbyID(id);
     if (index != -1) {
         return people[index];
     } else { // Throw
