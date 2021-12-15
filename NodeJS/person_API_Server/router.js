@@ -1,11 +1,13 @@
 const people = require('./modules/people');
+const express = require('express');
 const url = '/person'
 const {
     body,
     validationResult
 } = require('express-validator');
-module.exports = (app) => {
 
+module.exports = (app) => {
+    app.use(express.json())
     // Getting the array of people
     app.get(url, (req, res) => {
         res.send(people.show_people())
@@ -16,7 +18,12 @@ module.exports = (app) => {
         const {
             id
         } = req.params;
-        res.send(people.show_person(id));
+        try {
+            res.send(people.show_person(id));
+        } catch (error) {
+            res.status(400);
+            res.send(error)
+        }
     })
 
 
@@ -56,7 +63,12 @@ module.exports = (app) => {
             property,
             value
         } = req.body
-        res.send(`Person Changed :${JSON.stringify(people.update_person(id, property, value))}`);
+        try {
+            res.send(`Person Changed :${JSON.stringify(people.update_person(id, property, value))}`);
+        } catch (error) {
+            res.status(400);
+            res.send(error);
+        }
     })
 
 
@@ -65,11 +77,13 @@ module.exports = (app) => {
         const {
             id
         } = req.params
-        let person_to_delete = people.delete_person(id);
-        if (person_to_delete)
-            res.send(`The Person with the ID of ${id} was deleted. \n ${JSON.stringify(person_to_delete)}`);
-        else {
-            res.send(`Person with ID ${id} dose not exist`);
+        try {
+            res.send(`The Person with the ID of ${id} was deleted. \n ${JSON.stringify(people.delete_person(id))}`);
+        } catch (error) {
+            res.status(400);
+            res.send(error);
+
+
         }
     })
 

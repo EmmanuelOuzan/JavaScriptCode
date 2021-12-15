@@ -7,13 +7,12 @@
 // let addRequestId = require('express-request-id')();
 // Creation of an array of objects called people
 const people = [];
-let uniq_ID = 0;
-const uniqid = require('uniqid'); 
+const uniq_ID = require('uniqid');
 
 
 function person_creation(fname, lname, age, city, eyeColor) {
     let person = {
-        uniq_ID: uniq_ID,
+        uniq_ID: uniq_ID(),
         fname: fname,
         lname: lname,
         age: age,
@@ -21,7 +20,7 @@ function person_creation(fname, lname, age, city, eyeColor) {
         eyeColor: eyeColor
     };
     people.push(person);
-    uniq_ID += 1;
+    
     return person;
 }
 // Creation Example 
@@ -36,29 +35,30 @@ function show_person(id) {
     const index = getIndexbyID(id);
     if (index != -1) {
         return people[index];
-    } else { // Throw
-        return `The Person with the ID: '${id}' was not found`
+    } else { 
+        throw `The Person with the ID: '${id}' was not found`
     }
 }
 
 function delete_person(id) {
-    let index = people.findIndex(element => element.uniq_ID == id);
+    const index = getIndexbyID(id);
     if (index != -1)
         return people.splice(index, 1);
-    else // Throw
-        return false
+    else
+        throw `'Person with ID ${id} was not found'`;
 }
 
 function update_person(id, property, value) {
     const index = getIndexbyID(id);
-    if(index != -1){
+    if (index != -1) {
         people[index][property] = value;
         return people[index];
     }
-    else // Throw
-        return `The Person with the ID: '${id}' was not found`
+    else
+        throw `The Person with the ID: '${id}' was not found`;
 }
 
+// Internal function that is not exposed
 function getIndexbyID(id) {
     return people.findIndex(element => element.uniq_ID == id);
 }

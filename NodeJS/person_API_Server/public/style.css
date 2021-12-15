@@ -1,3 +1,8 @@
+body {
+    font-family: 'Bakbak One', cursive;
+    background-image: url(https://wallpaperaccess.com/full/2842066.jpg);
+}
+
 #id {
     margin: auto;
 }
@@ -36,6 +41,18 @@
 
 .person_item {
     width: 300px;
-    height: 100px;
-    border: 1px solid blue;
+    height: 120px;
+    border: 1px solid black;
+}
+
+select.textbox {
+    width: 174px;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 90%;
 }
