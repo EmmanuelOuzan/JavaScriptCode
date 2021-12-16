@@ -10,8 +10,12 @@
 // I will be a JS Developer! Its not too late. We have a month to recap! :) 
 
 
+// TO DO THE PROJECT AGAIN 
 // Creation of object person
-function Person_creation(fname, lname, id, city, birthDate, parentID = 0) {
+
+// TO DO 
+// Create a function that gets an object and add its to the person array ! 
+function Person_creation(fname, lname, id, city, birthDate = 0, parentID = 0) {
     let person = {
         fname: fname,
         lname: lname,
@@ -24,7 +28,8 @@ function Person_creation(fname, lname, id, city, birthDate, parentID = 0) {
 }
 
 // Creation Example 
-let person1 = Person_creation('Emmanuel', 'Ouzan', '324320134', 'JLM', '08/08/1997', '0');
+//obj = {'fname' : 'emmanuel'};
+//let person1 = ('Emmanuel', 'Ouzan', '324320134', 'JLM', , '0');
 let person2 = Person_creation('Aviad', 'derli', '123', 'JLM', '08/02/1989', '0');
 let person3 = Person_creation("Hana", 'lname', '321', 'BeitShemesh', '08/06/97', '324320134');
 let person4 = Person_creation('Shlomi', 'Avinoam', '321', 'Jerusalem', '08/08/88', '123');

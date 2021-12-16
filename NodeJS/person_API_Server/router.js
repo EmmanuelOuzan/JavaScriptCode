@@ -26,10 +26,20 @@ module.exports = (app) => {
         }
     })
 
+    app.get(`${url}/:search_value`, (req, res) => {
+        const {
+            search_value
+        } = req.params
+        try {
+            res.send(people.filterPerson(search_value));
+        } catch (error) {
+            res.send("Not Found");
+        }
+    })
 
 
-    // POST - Creation of a new person
-    app.post(url, body(['fname', 'lname', 'city', 'eyeColor']).isAlpha(), body('age').isNumeric(), function (req, res) {
+    // POST - Creation of a new person // Find a validation for EyeColor 
+    app.post(url, body(['fname', 'lname', 'city']).isAlpha(), body('age').isNumeric(), function (req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({
@@ -82,8 +92,6 @@ module.exports = (app) => {
         } catch (error) {
             res.status(400);
             res.send(error);
-
-
         }
     })
 

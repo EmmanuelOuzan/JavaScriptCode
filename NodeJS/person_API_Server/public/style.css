@@ -56,3 +56,19 @@ select.textbox {
     display: inline-block;
     margin-left: 90%;
 }
+
+.X {
+    float: right;
+}
+
+.X:hover {
+    color: red;
+}
+
+#search_button {
+    font-size: 20px;
+}
+
+#search_box {
+    font-size: 20px;
+}

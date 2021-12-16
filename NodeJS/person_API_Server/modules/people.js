@@ -20,7 +20,7 @@ function person_creation(fname, lname, age, city, eyeColor) {
         eyeColor: eyeColor
     };
     people.push(person);
-    
+
     return person;
 }
 // Creation Example 
@@ -35,7 +35,7 @@ function show_person(id) {
     const index = getIndexbyID(id);
     if (index != -1) {
         return people[index];
-    } else { 
+    } else {
         throw `The Person with the ID: '${id}' was not found`
     }
 }
@@ -63,11 +63,15 @@ function getIndexbyID(id) {
     return people.findIndex(element => element.uniq_ID == id);
 }
 
+function filterPerson(search_value) { // also city?
+    return people.filter(p => p.fname.includes(search_value) | p.lname.includes(search_value));
+}
 
 module.exports = {
     person_creation,
     show_people,
     delete_person,
     show_person,
-    update_person
+    update_person,
+    filterPerson
 };
