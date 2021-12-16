@@ -26,15 +26,11 @@ module.exports = (app) => {
         }
     })
 
-    app.get(`${url}/:search_value`, (req, res) => {
+    app.get(`/person_filter/:search_value`, (req, res) => {
         const {
             search_value
         } = req.params
-        try {
-            res.send(people.filterPerson(search_value));
-        } catch (error) {
-            res.send("Not Found");
-        }
+        res.send(people.filterPerson(search_value));
     })
 
 

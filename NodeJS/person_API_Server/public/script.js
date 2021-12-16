@@ -22,7 +22,7 @@ function render(arr) {
         
         </div>`
             });
-            console.log(result.data)
+            // console.log(result.data)
         })
 }
 document.querySelector('form')
@@ -56,35 +56,56 @@ async function deletePerson(uniq_ID) {
     await axios.delete(`/person/${uniq_ID}`)
     getAll()
 }
-
-// 1.Create element input box with search
-// 2. Connect the search into a function with the value
-// 3. Call Axios from the function with the value
-// 4. Create a listener with express at the router
-// 5. Create a function to filter the array with string
-// 6. Return with express the value - Get it with Axios
-// 7. Add the result to the page with new Inner HTML
-
-async function send_search(search_value) {
-    await axios.get(`/person/${search_value}`)
-
+async function send_search() {
+    const search_value = document.querySelector('#search_box').value
+    const search_result = await axios.get(`/person_filter/${search_value}`)
+    console.log(search_result.data)
+    // add 
+    renderFindings(search_result.data)
+    // document.querySelector('.flex').innerHTML +=
+    //     `
+    //     <div class='person_item'>
+    //     <button class="X" onclick="deletePerson('${element.uniq_ID}')">X</button>
+    //     <b><li> ${element.fname} ${element.lname} </li></b><br>
+    //     <li> ${element.age} </li>
+    //     <li> ${element.city} </li>
+    //     <div class="right">
+    //     <span class="dot" style="background-color:${element.eyeColor}"></span>
+    //     </div>
+    //     </div>
+    //     <div class="vl2"></div>
+    // <br> ${JSON.stringify(search_result.data)};`
 }
-// Yossef code
-// function render(arr) {
-//     document.querySelector('#list').innerHTML =
-//         arr.map(p => `<li>
-//         <strong>${p.firstName} ${p.lastName}</strong>
-//         <div class="details">
-//             <div>
-//                 <span>${p.age}</span>
-//                 <span>${p.city}</span>
-//             </div>
-//             <div>
-//                 <div class="car-color" style="background-color: ${p.eyeColor};"></div>
-//             </div>
-//         </div>
-//     </li>`).join('')
-// }
+
+// Pressing Enter event listener
+// If i want to do input event :Writes on down
+const input = document.querySelector('#search_box');
+const log = document.getElementById('values');
+
+input.addEventListener('input', updateValue);
+
+function updateValue(e) {
+    log.textContent = e.target.value;
+}
+// Yossef map with my upgrades :)  `<div class="vl2"></div>` +
+function renderFindings(arr) {
+    console.log(arr)
+    document.querySelector('.search_results').innerHTML =
+        `<h1> Search Results! </h1>` +
+        arr.map(p => `
+        <li class="results_li">
+        <strong>${p.fname} ${p.lname}</strong>
+        <div class="details">
+            <div>
+                <span>${p.age}</span>
+                <span>${p.city}</span>
+            </div>
+            <div>
+                <div class="car-color" style="background-color: ${p.eyeColor};"></div>
+            </div>
+        </div>
+    </li>`).join('')
+}
 
 
 // function getAll() {
@@ -114,3 +135,12 @@ async function send_search(search_value) {
 //                 getAll()
 //             })
 //     }
+
+// Mission:
+// 1.Create element input box with search
+// 2. Connect the search into a function with the value
+// 3. Call Axios from the function with the value
+// 4. Create a listener with express at the router
+// 5. Create a function to filter the array with string
+// 6. Return with express the value - Get it with Axios
+// 7. Add the result to the page with new Inner HTML

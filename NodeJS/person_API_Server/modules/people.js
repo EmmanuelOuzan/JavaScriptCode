@@ -63,8 +63,10 @@ function getIndexbyID(id) {
     return people.findIndex(element => element.uniq_ID == id);
 }
 
-function filterPerson(search_value) { // also city?
-    return people.filter(p => p.fname.includes(search_value) | p.lname.includes(search_value));
+function filterPerson(search_value) {
+    search_value = search_value.toLowerCase();
+    return people.filter(p => p.fname.toLowerCase().includes(search_value) | p.lname.toLowerCase().includes(search_value));
+    //p.fname.includes(search_value) | p.lname.includes(search_value)
 }
 
 module.exports = {

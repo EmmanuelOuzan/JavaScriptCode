@@ -28,6 +28,11 @@ body {
     height: 500px;
 }
 
+.vl2 {
+    border-left: 6px solid black;
+    height: 500px;
+}
+
 .textbox {
     margin: 5px 0px 5px;
 }
@@ -71,4 +76,12 @@ select.textbox {
 
 #search_box {
     font-size: 20px;
+}
+
+.results_li {
+    list-style-type: none;
+    width: 300px;
+    height: 120px;
+    border: 1px solid black;
+
 }
