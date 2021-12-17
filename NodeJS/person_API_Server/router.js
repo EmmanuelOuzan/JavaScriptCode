@@ -50,7 +50,7 @@ module.exports = (app) => {
             eyeColor
         } = req.body
 
-        let person = people.person_creation(fname, lname, age, city, eyeColor);
+        let person = people.create(fname, lname, age, city, eyeColor);
         res.send(`Person has been created. \n ${JSON.stringify(person)}`);
     })
 
@@ -70,7 +70,7 @@ module.exports = (app) => {
             value
         } = req.body
         try {
-            res.send(`Person Changed :${JSON.stringify(people.update_person(id, property, value))}`);
+            res.send(`Person Changed :${JSON.stringify(people.update(id, property, value))}`);
         } catch (error) {
             res.status(400);
             res.send(error);

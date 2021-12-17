@@ -22,7 +22,6 @@ function render(arr) {
         
         </div>`
             });
-            // console.log(result.data)
         })
 }
 document.querySelector('form')
@@ -60,21 +59,7 @@ async function send_search() {
     const search_value = document.querySelector('#search_box').value
     const search_result = await axios.get(`/person_filter/${search_value}`)
     console.log(search_result.data)
-    // add 
     renderFindings(search_result.data)
-    // document.querySelector('.flex').innerHTML +=
-    //     `
-    //     <div class='person_item'>
-    //     <button class="X" onclick="deletePerson('${element.uniq_ID}')">X</button>
-    //     <b><li> ${element.fname} ${element.lname} </li></b><br>
-    //     <li> ${element.age} </li>
-    //     <li> ${element.city} </li>
-    //     <div class="right">
-    //     <span class="dot" style="background-color:${element.eyeColor}"></span>
-    //     </div>
-    //     </div>
-    //     <div class="vl2"></div>
-    // <br> ${JSON.stringify(search_result.data)};`
 }
 
 // Pressing Enter event listener
@@ -87,7 +72,7 @@ input.addEventListener('input', updateValue);
 function updateValue(e) {
     log.textContent = e.target.value;
 }
-// Yossef map with my upgrades :)  `<div class="vl2"></div>` +
+// Yossef map with my upgrades :)
 function renderFindings(arr) {
     console.log(arr)
     document.querySelector('.search_results').innerHTML =
@@ -101,40 +86,11 @@ function renderFindings(arr) {
                 <span>${p.city}</span>
             </div>
             <div>
-                <div class="car-color" style="background-color: ${p.eyeColor};"></div>
+                <div class="dot" style="background-color: ${p.eyeColor};"></div>
             </div>
         </div>
     </li>`).join('')
 }
-
-
-// function getAll() {
-//     axios.get('/person')
-//         .then(result => {
-//             document.querySelector('#box')
-//                 .innerHTML = JSON.stringify(result.data)
-//         })
-// }
-
-// document.querySelector('#getList')
-//     .onclick = () => {
-//         getAll()
-//     }
-
-// document.querySelector('#addPerson')
-//     .onclick = () => {
-//         const values = {
-//             "firstName": "vv",
-//             "lastName": "ouzan",
-//             "age": 26,
-//             "city": "Jerusalem",
-//             "eyeColor": "blue"
-//         }
-//         axios.post('/person', values)
-//             .then(result => {
-//                 getAll()
-//             })
-//     }
 
 // Mission:
 // 1.Create element input box with search

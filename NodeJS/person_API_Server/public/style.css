@@ -85,3 +85,7 @@ select.textbox {
     border: 1px solid black;
 
 }
+
+.search_results {
+    padding-left: 10px;
+}

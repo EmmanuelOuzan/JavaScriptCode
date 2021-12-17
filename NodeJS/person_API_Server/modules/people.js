@@ -1,38 +1,72 @@
-// TO DO  :
-// 1. Use the express-id package to generate ID
-// 2. Change the else to generate an error
-// 3. use more const then let DONE
-// 4. Change the find Index to a function DONE
-
-// let addRequestId = require('express-request-id')();
+// Importing uniq_ID npm package
+const uniq_ID = require('uniqid');
 // Creation of an array of objects called people
 const people = [];
-const uniq_ID = require('uniqid');
 
+const keys = {
+    fname: 'string',
+    lname: 'string',
+    age: 'number',
+    city: 'string',
+    eyeColor: 'string'
+}
 
-function person_creation(fname, lname, age, city, eyeColor) {
-    let person = {
-        uniq_ID: uniq_ID(),
-        fname: fname,
-        lname: lname,
-        age: age,
-        city: city,
-        eyeColor: eyeColor
-    };
-    people.push(person);
+function validate(data, mode) {
+    // new array with the validated data
+    const validateData = {}
+    // looping over the wanted object
+    for (const key in keys) {
+        // If the mode is update it makes sure we have all the keys.
+        if (mode != 'update') {
+            if (!data[key])
+                throw `key '${key}' is required`
+        }
+        // Handeling the age exception. Becuase HTTP recives only strings
+        // Then we have to reformat it to number to make sure its a number.
+        if (!isNaN(Number(data[key])))
+            data[key] = Number(data[key])
+        // Checks if the input is of the right type.
+        if (typeof data[key] != keys[key])
+            throw `key '${key}' must be of type '${keys[key]}'`
+        // if passes all the tests - adds it to the new array
+        validateData[key] = data[key]
+    }
+    return validateData
+}
 
-    return person;
+function create(newPerson) {
+    newPerson = validate(newPerson)
+    newPerson.uniq_ID = uniq_ID();
+    people.push(newPerson)
+    return newPerson
 }
 // Creation Example 
-person_creation('Emmanuel', 'Ouzan', 25, 'jlm', 'blue');
-person_creation('Emmanuel2', 'Ouzan2', 25, 'jlm', 'blue');
+let person1 =
+{
+    fname: 'Emmanuel',
+    lname: 'Ouzan',
+    age: '24',
+    city: 'JLM',
+    eyeColor: 'blue'
+};
+person1 = create(person1)
+
+let person2 =
+{
+    fname: 'Emmanuel',
+    lname: 'Ouzan',
+    age: '24',
+    city: 'JLM',
+    eyeColor: 'blue'
+};
+person2 = create(person2);
 
 function show_people() {
     return people;
 }
 
 function show_person(id) {
-    const index = getIndexbyID(id);
+    const index = getPersonIndexById(id);
     if (index != -1) {
         return people[index];
     } else {
@@ -41,15 +75,15 @@ function show_person(id) {
 }
 
 function delete_person(id) {
-    const index = getIndexbyID(id);
+    const index = getPersonIndexById(id);
     if (index != -1)
         return people.splice(index, 1);
     else
         throw `'Person with ID ${id} was not found'`;
 }
 
-function update_person(id, property, value) {
-    const index = getIndexbyID(id);
+function update(id, property, value) {
+    const index = getPersonIndexById(id);
     if (index != -1) {
         people[index][property] = value;
         return people[index];
@@ -59,21 +93,20 @@ function update_person(id, property, value) {
 }
 
 // Internal function that is not exposed
-function getIndexbyID(id) {
+function getPersonIndexById(id) {
     return people.findIndex(element => element.uniq_ID == id);
 }
-
+// Tto make better?
 function filterPerson(search_value) {
     search_value = search_value.toLowerCase();
     return people.filter(p => p.fname.toLowerCase().includes(search_value) | p.lname.toLowerCase().includes(search_value));
-    //p.fname.includes(search_value) | p.lname.includes(search_value)
 }
 
 module.exports = {
-    person_creation,
+    create,
     show_people,
     delete_person,
     show_person,
-    update_person,
+    update,
     filterPerson
 };
