@@ -57,7 +57,7 @@ async function deletePerson(uniq_ID) {
 }
 async function send_search() {
     const search_value = document.querySelector('#search_box').value
-    const search_result = await axios.get(`/person_filter/${search_value}`)
+    const search_result = await axios.get(`/person/search/${search_value}`)
     console.log(search_result.data)
     renderFindings(search_result.data)
 }

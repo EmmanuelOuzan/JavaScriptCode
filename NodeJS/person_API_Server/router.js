@@ -26,7 +26,7 @@ module.exports = (app) => {
         }
     })
 
-    app.get(`/person_filter/:search_value`, (req, res) => {
+    app.get(`${url}/search/:search_value`, (req, res) => {
         const {
             search_value
         } = req.params
