@@ -15,36 +15,79 @@
 
 // TO DO 
 // Create a function that gets an object and add its to the person array ! 
-function Person_creation(fname, lname, id, city, birthDate = 0, parentID = 0) {
-    let person = {
-        fname: fname,
-        lname: lname,
-        id: id,
-        city: city,
-        birthDate: birthDate,
-        parentID: parentID
-    };
-    return person;
-}
-
-// Creation Example 
-//obj = {'fname' : 'emmanuel'};
-//let person1 = ('Emmanuel', 'Ouzan', '324320134', 'JLM', , '0');
-let person2 = Person_creation('Aviad', 'derli', '123', 'JLM', '08/02/1989', '0');
-let person3 = Person_creation("Hana", 'lname', '321', 'BeitShemesh', '08/06/97', '324320134');
-let person4 = Person_creation('Shlomi', 'Avinoam', '321', 'Jerusalem', '08/08/88', '123');
-
-// Change of attribute
-person2.city = "TLV";
+// Much better person creation + validation 
 
 // Creation of an array of objects called people
 let people = [];
 
-// Add the people to the array
-people.push(person1);
-people.push(person2);
-people.push(person3);
-people.push(person4);
+const keys = {
+    fname: 'string',
+    lname: 'string',
+    id: 'number',
+    city: 'string',
+    birthDate: 'string',
+    parentID: 'number' //? date
+}
+
+function validate(data, mode) {
+    // new array with the validated data
+    const validateData = {}
+    // looping over the wanted object
+    for (const key in keys) {
+        // If the mode is update it makes sure we have all the keys.
+        if (mode != 'update') {
+            if (!data[key])
+                throw `key '${key}' is required`
+        }
+        // Handeling the age exception. Becuase HTTP recives only strings
+        // Then we have to reformat it to number to make sure its a number.
+        if (!isNaN(Number(data[key])))
+            data[key] = Number(data[key])
+        // Checks if the input is of the right type.
+        if (typeof data[key] != keys[key])
+            throw `key '${key}' must be of type '${keys[key]}'`
+        // if passes all the tests - adds it to the new array
+        validateData[key] = data[key]
+    }
+    return validateData
+}
+
+function create(newPerson) {
+    newPerson = validate(newPerson)
+    people.push(newPerson)
+    return newPerson
+}
+
+const person1 =
+{
+
+    fname: 'emmanuel',
+    lname: 'ouzan',
+    id: '321',
+    city: 'jerusalem',
+    birthDate: '08/08/92',
+    parentID: '0' //? date
+
+}
+const person2 =
+{
+
+    fname: 'emmanuel',
+    lname: 'ouzan',
+    id: '321',
+    city: 'jerusalem',
+    birthDate: '08/08/92',
+    parentID: '0' //? date
+
+}
+let new_person = create(person1);
+let nperson2 = create(person2)
+
+// Happy ! New creation! Why is it better again?
+
+// Change of attribute
+nperson2.city = "TLV";
+
 
 // Operation on each of one of the people
 people.forEach(v => console.log(v.birthDate));
@@ -54,9 +97,12 @@ people.forEach(person => console.log(person.id));
 
 // Filters for something
 // last name = Ouzan,  2. Where Emmanuel Exists
-let check = people.filter(person => person.lname == 'Ouzan');
-people.filter(element => element == 'Emmanuel');
+let check = people.filter(person => person.lname == 'ouzan');
+let check2 = people.filter(element => element.fname == 'emmanuel');
 
+
+// How to validate them one by one?
+// The validation method is on all
 function create_person() {
     let fname = prompt("Please enter your first name");
     validate_String(fname);
