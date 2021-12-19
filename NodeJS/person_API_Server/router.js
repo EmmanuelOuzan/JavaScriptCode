@@ -29,7 +29,7 @@ module.exports = (app) => {
         }
     })
 
-    app.get(`${url}/searchsearch_val/:ue`, (req, res) => {
+    app.get(`${url}/search/:search_value`, (req, res) => {
         const {
             search_value
         } = req.params
@@ -53,7 +53,7 @@ module.exports = (app) => {
             eyeColor
         } = req.body
 
-        let person = people.create(fname, lname, age, city, eyeColor);
+        let person = people.create(req.body);
         res.send(`Person has been created. \n ${JSON.stringify(person)}`);
     })
 

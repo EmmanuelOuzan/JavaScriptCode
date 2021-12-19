@@ -12,7 +12,7 @@ if (!fs.existsSync(list_path)) {
 }
 // Loads List
 const list = require(list_path)
-
+// Need to code - write function and read function
 function reset_list() {
     fs.writeFileSync(list_path, JSON.stringify([example_task]));
 }
@@ -40,11 +40,17 @@ function read(id) {
         else
             return `ID Number ${id} was not found`
     }
-    return list 
+    return list
 }
 
-function update(params) {
-
+function update(id) {
+    console.log(list)
+    const index = list.findIndex(task => task.id == id)
+    if (index != -1) {
+        list[index].done = !list[index].done
+    }
+    else
+        return `Could not find ID: ${id}`
 }
 function del(params) {
 
@@ -54,7 +60,8 @@ module.exports = {
     create,
     read,
     update,
-    delete: del
+    delete: del,
+    reset_list
 }
 
 // future validation 

@@ -35,7 +35,7 @@ function validate(data, mode) {
 }
 
 function create(newPerson) {
-    newPerson = validate(newPerson)
+    // newPerson = validate(newPerson)
     newPerson.uniq_ID = uniq_ID();
     people.push(newPerson)
     return newPerson

@@ -9,7 +9,7 @@ function render(arr) {
     axios.get('/person')
         .then(result => {
             document.querySelector('.person_list').innerHTML = " "
-            result.data.forEach(element => {
+            arr.forEach(element => {
                 document.querySelector(`.person_list`).innerHTML += `
         <div class='person_item'>
         <button class="X" onclick="deletePerson('${element.uniq_ID}')" >X</button>
@@ -24,12 +24,15 @@ function render(arr) {
             });
         })
 }
+
+// TO learn 
 document.querySelector('form')
     .onsubmit = (event) => {
         // Remove default behaivor 
         event.preventDefault()
         // target = ?
         const form = event.target
+        console.log(form)
         const values = Object.values(form)
             .reduce((acc, curr) => {
                 const { value, name } = curr
@@ -66,12 +69,23 @@ async function send_search() {
 // If i want to do input event :Writes on down
 const input = document.querySelector('#search_box');
 const log = document.getElementById('values');
-
-input.addEventListener('keydown', updateValue);
+// ADD
+// keydown for enter
+// make it write with 
+// 1. minimum letters
+// 2. timeout of few seconds to send results
+input.addEventListener('input', updateValue);
+input.addEventListener('keydown', updateValue2);
 
 function updateValue(e) {
     log.textContent = e.target.value;
-    console.log(e.key)
+}
+function updateValue2(e) {
+    log.textContent = e.target.value;
+    console.log(e.key);
+    if (e.key == 'Enter') {
+        send_search()
+    }
 }
 // Yossef map with my upgrades :)
 function renderFindings(arr) {
