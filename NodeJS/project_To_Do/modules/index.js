@@ -1,4 +1,10 @@
 // Make functions
+
+// Loads List
+// const list = require(list_path)
+// Need to code - write function and read function
+
+
 const fs = require('fs');
 const list_path = `${__dirname}/files/todolist.json`
 let counter_ID = 1;
@@ -8,31 +14,20 @@ const example_task = { "text": "todo_1", "done": false, "id": 0 }
 
 // Creation of list if it dose not exist
 if (!fs.existsSync(list_path)) {
-    fs.writeFileSync(list_path, JSON.stringify([example_task]));
+    fs.writeFileSync(list_path, '[]');
 }
-// Loads List
-const list = require(list_path)
-// Need to code - write function and read function
-function reset_list() {
-    fs.writeFileSync(list_path, JSON.stringify([example_task]));
-}
-function read_task_list() {
-
-}
-
-
-const to_do1 = { "text": "buy chicken", "done": false }
-create(to_do1)
 
 function create(task) {
     // validation
-    task.id = counter_ID;
-    counter_ID++;
+    const list = getListFromJSON()
+    task.id = counter_ID++;
     list.push(task)
+    saveListToJSON(list)
     return list
 }
 // Overview
 function read(id) {
+    const list = getListFromJSON()
     if (id) {
         const index = list.findIndex(element => element.id == id)
         if (index != -1)
@@ -44,7 +39,7 @@ function read(id) {
 }
 
 function update(id) {
-    console.log(list)
+    const list = getListFromJSON()
     const index = list.findIndex(task => task.id == id)
     if (index != -1) {
         list[index].done = !list[index].done
@@ -61,12 +56,30 @@ module.exports = {
     read,
     update,
     delete: del,
-    reset_list
+}
+// INTERNAL FUNCTIONS 
+
+function getListFromJSON() {
+    return require(list_path)
+}
+function saveListToJSON(list) {
+    fs.writeFileSync(list_path, JSON.stringify(list));
 }
 
-// future validation 
-const valid =
-{
-    "text": "string",
-    "done": "boolean"
-}
+
+
+
+
+
+
+
+
+// future validation
+// const valid =
+// {
+//     "text": "string",
+//     "done": "boolean"
+// }
+// function reset_list() {
+//     fs.writeFileSync(list_path, JSON.stringify([example_task]));
+// }
