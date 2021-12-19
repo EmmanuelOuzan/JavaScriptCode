@@ -53,11 +53,11 @@ person1 = create(person1)
 
 let person2 =
 {
-    fname: 'Emmanuel',
-    lname: 'Ouzan',
-    age: '24',
+    fname: 'yossef',
+    lname: 'gabay',
+    age: '29',
     city: 'JLM',
-    eyeColor: 'blue'
+    eyeColor: 'black'
 };
 person2 = create(person2);
 
@@ -96,10 +96,10 @@ function update(id, property, value) {
 function getPersonIndexById(id) {
     return people.findIndex(element => element.uniq_ID == id);
 }
-// Tto make better?
+
 function filterPerson(search_value) {
     search_value = search_value.toLowerCase();
-    return people.filter(p => p.fname.toLowerCase().includes(search_value) | p.lname.toLowerCase().includes(search_value));
+    return people.filter(p => `${p.fname} ${p.lname}`.toLowerCase().includes(search_value));
 }
 
 module.exports = {

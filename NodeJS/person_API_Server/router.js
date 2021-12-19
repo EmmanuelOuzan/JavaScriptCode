@@ -1,14 +1,17 @@
 const people = require('./modules/people');
 const express = require('express');
 const url = '/person'
+
 const {
     body,
     validationResult
 } = require('express-validator');
 
+
 module.exports = (app) => {
     app.use(express.json())
     // Getting the array of people
+
     app.get(url, (req, res) => {
         res.send(people.show_people())
     })
@@ -26,7 +29,7 @@ module.exports = (app) => {
         }
     })
 
-    app.get(`${url}/search/:search_value`, (req, res) => {
+    app.get(`${url}/searchsearch_val/:ue`, (req, res) => {
         const {
             search_value
         } = req.params

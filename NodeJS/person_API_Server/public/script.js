@@ -67,10 +67,11 @@ async function send_search() {
 const input = document.querySelector('#search_box');
 const log = document.getElementById('values');
 
-input.addEventListener('input', updateValue);
+input.addEventListener('keydown', updateValue);
 
 function updateValue(e) {
     log.textContent = e.target.value;
+    console.log(e.key)
 }
 // Yossef map with my upgrades :)
 function renderFindings(arr) {
@@ -93,6 +94,7 @@ function renderFindings(arr) {
 }
 
 // Mission:
+
 // 1.Create element input box with search
 // 2. Connect the search into a function with the value
 // 3. Call Axios from the function with the value
