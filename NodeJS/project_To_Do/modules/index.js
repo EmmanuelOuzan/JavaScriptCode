@@ -44,6 +44,9 @@ function update(id) {
         index = list.findIndex(task => task.id == id)
     if (index != -1) {
         list[index].done = !list[index].done
+        saveListToJSON(list)
+        return list
+
     }
     else
         return `Could not find ID: ${id}`
@@ -57,12 +60,16 @@ function del(id) {
     saveListToJSON(list)
     return deleted
 }
-
+// Extra work 
+function reset_list() {
+    fs.writeFileSync(list_path, '[]');
+}
 module.exports = {
     create,
     read,
     update,
     delete: del,
+    reset_list
 }
 // INTERNAL FUNCTIONS 
 
@@ -86,7 +93,4 @@ function saveListToJSON(list) {
 // {
 //     "text": "string",
 //     "done": "boolean"
-// }
-// function reset_list() {
-//     fs.writeFileSync(list_path, JSON.stringify([example_task]));
 // }

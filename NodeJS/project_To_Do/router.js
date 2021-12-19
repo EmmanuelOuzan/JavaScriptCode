@@ -9,10 +9,7 @@ module.exports = (app) => {
     )
 
     app.get(`${url}/:id`, (req, res) => {
-        const {
-            id
-        } = req.params
-        res.send(files.read(id))
+        res.send(files.read(req.params.id))
     })
     // Creates a new to do list 
     app.post(url, (req, res) =>
@@ -26,8 +23,8 @@ module.exports = (app) => {
     app.delete(`${url}/:id`, (req, res) =>
         res.send(files.delete(req.params.id))
     )
-
-    // app.delete(`${url}/:all`, (req, res) => {
-    //     res.send(files.reset_list())
-    // })
+    
+    app.delete(`${url}/delAll`, (req, res) => {
+        res.send(files.reset_list())
+    })
 }
