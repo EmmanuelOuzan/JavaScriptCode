@@ -23,8 +23,8 @@ module.exports = (app) => {
     app.put(`${url}/:id`, (req, res) => {
         res.send(files.update(req.params.id))
     })
-    app.delete(url, (req, res) =>
-        res.send(files.delete())
+    app.delete(`${url}/:id`, (req, res) =>
+        res.send(files.delete(req.params.id))
     )
 
     // app.delete(`${url}/:all`, (req, res) => {

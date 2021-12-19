@@ -39,16 +39,23 @@ function read(id) {
 }
 
 function update(id) {
-    const list = getListFromJSON()
-    const index = list.findIndex(task => task.id == id)
+    const
+        list = getListFromJSON(),
+        index = list.findIndex(task => task.id == id)
     if (index != -1) {
         list[index].done = !list[index].done
     }
     else
         return `Could not find ID: ${id}`
 }
-function del(params) {
-
+function del(id) {
+    const
+        list = getListFromJSON(),
+        index = list.findIndex(task => task.id == id)
+    deleted = list[index]
+    list.splice(index, 1)
+    saveListToJSON(list)
+    return deleted
 }
 
 module.exports = {
